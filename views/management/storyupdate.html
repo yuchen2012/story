@@ -1,0 +1,31 @@
+<% include header1.html %>
+
+
+<div class="container">
+	<label>Story update</label>
+	<form role="form" method="post">
+		<fieldset>
+			<div>
+				<label>story id:</label>
+				<input type="text" class="form-control" readonly="readonly" id="rowid" name="rowid" value=<%=data[0].rowid%>>
+			</div>
+			
+			<div>
+				<label>name:</label>
+				<input type="text" class="form-control" id="name" name="name" placeholder="new name" required>
+			</div>
+			
+			
+			<div>
+				<p></p>
+				<button type="submit" class="btn btn-primary">Update</button>
+			</div>
+			
+		</fieldset>
+	</form>
+</div>
+
+
+
+
+<% include footer1.html %>

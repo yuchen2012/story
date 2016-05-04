@@ -88,19 +88,26 @@ exports.addStory = function(data){
 }
 
 exports.updateStory = function(data){
-	sql = 'UPDATE item SET name = ? WHERE rowid =?';;
+	sql = 'UPDATE story SET name = ? WHERE rowid =?';;
 	runSql(sql,data);
 }
 
 exports.deleteStory = function(data){
-	sql = 'DELETE FROM story WHERE row_id = ?';
+	sql = 'DELETE FROM story WHERE rowid = ?';
 	runSql(sql,data);
 }
 
 exports.showStory = function(res,func){
 	sql = 'SELECT *,rowid FROM story';
 	db.all(sql,function(err,row){
-		//something here
+		if(func=='management')res.render('management/story',{title:'Story Management',data:row});
+	});
+}
+
+exports.lookupStory = function(data,res,func){
+	sql = 'SELECT *,rowid FROM story WHERE rowid = ?';
+	db.all(sql,data,function(err,row){
+		if(func=='management')res.render('management/storyupdate',{title:'Story Update',data:row});
 	});
 }
 
@@ -124,13 +131,29 @@ exports.updatePage = function(data){
 }
 
 exports.deletePage = function(data){
-	sql = 'DELETE FROM page WHERE row_id = ?';
+	sql = 'DELETE FROM page WHERE rowid = ?';
 	runSql(sql,data);
 }
 
-exports.showPage = function(res,func){
-	sql = 'SELECT *,rowid FROM page';
-	db.all(sql,function(err,row){
-		//something here
-	});
+exports.showPage = function(res,data,func){
+	if(func=='all'){
+		sql = 'SELECT *,rowid FROM page';
+		db.all(sql,function(err,row){
+			res.render('management/page',{title:'Page Management',storyid:0,data:row});
+		});
+	}else if(func=='storyid'){
+		sql = 'SELECT *,rowid FROM page WHERE story_id = ?';
+		db.all(sql,data,function(err,row){
+			res.render('management/page',{title:'Page Management',storyid:data,data:row});
+		});
+	}
+}
+
+exports.lookupPage = function(res,data,func){
+	if(func=='management'){
+		sql = 'SELECT *,rowid FROM page WHERE rowid = ?';
+		db.all(sql,data,function(err,row){
+			res.render('management/pageupdate',{title:'Page Update',data:row});
+		});
+	}
 }

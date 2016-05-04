@@ -1,0 +1,47 @@
+<% include header.html %>
+
+<div class="container">
+	<label>Story</label>/<label><a href="/management/page/0">Page</a></label>/<label><a href="/management/progress">Progress</a></label>
+</div>
+
+<div class="container">
+	<form role="form" method="post">
+		<fieldset>
+			<div>
+				<label>name:</label>
+				<input type="text" class="form-control" id="name" name="name" placeholder="name"  required>
+			</div>
+			
+			
+			<div>
+				<p></p>
+				<button type="submit" class="btn btn-primary">Add</button>
+			</div>
+		</fieldset>
+	</form>
+</div>
+
+<P></P>
+<div class="container">	
+	<table style="width:60%" border="1">
+		<th>story_id</th><th>name</th><th>functions</th>
+		
+		<%for(var i=0;i<data.length;i++){%>
+		<tr>
+			<td><%=data[i].rowid%></td>
+			<td><%=data[i].name%></td>
+			<td>
+				<a href="/management/story/update/<%=data[i].rowid%>">Update</a>/
+				<a href="/management/story/delete/<%=data[i].rowid%>">Delete</a>/
+				<a href="/management/page/<%=data[i].rowid%>">Add page</a>
+			</td>
+		</tr>
+		<%}%>		
+	</table>
+</div>
+
+
+
+<!--<script src="../../../javascripts/iframe.js"></script>!-->
+
+<% include footer.html %>

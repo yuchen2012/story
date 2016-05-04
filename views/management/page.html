@@ -1,0 +1,61 @@
+<% include header1.html %>
+
+<div class="container">
+	<label><a href="/management/story">Story</a></label>/<label>Page</label>/<label><a href="/management/progress">Progress</a></label>
+	<% if(storyid!=0){%><p></p><a href="/management/page/0">Show all Page</a><p></p><%}%> 
+</div>
+
+<div class="container">
+	<form role="form" method="post">
+		<fieldset>
+			<div>
+				<label>Page index:</label>
+				<input type="text" class="form-control" id="page_index" name="page_index" placeholder="page index"  required>
+			</div>
+			
+			<div>
+				<label>story id:</label>
+				<input type="text" class="form-control" id="story_id" name="story_id" placeholder="story id" 
+				<% if(storyid!=0){%> value="<%=storyid%>" readonly="readonly" <%}%>
+				required>
+			</div>
+			
+			<div>
+				<label>text:</label>
+				<P></P>
+				<textarea  rows="4" cols="800" id="text" name="text" placeholder="text"  ></textarea>
+			</div>
+			
+			<div>
+				<p></p>
+				<button type="submit" class="btn btn-primary">Add</button>
+			</div>
+		</fieldset>
+	</form>
+</div>
+
+<P></P>
+<div class="container">	
+	<table style="width:60%" border="1">
+		<th>page id</th><th>page index</th><th>story id</th><th>text</th><th>functions</th>
+		
+		<%for(var i=0;i<data.length;i++){%>
+		<tr>
+			<td><%=data[i].rowid%></td>
+			<td><%=data[i].page_index%></td>
+			<td><%=data[i].story_id%></td>
+			<td><%=data[i].text%></td>
+			<td>
+				<a href="/management/page/update/<%=data[i].rowid%>">Update</a>/
+				<a href="/management/page/delete/<%=data[i].rowid%>">Delete</a>
+			</td>
+		</tr>
+		<%}%>		
+	</table>
+</div>
+
+
+
+<!--<script src="../../../javascripts/iframe.js"></script>!-->
+
+<% include footer1.html %>

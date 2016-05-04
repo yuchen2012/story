@@ -10,7 +10,8 @@ var users = require('./routes/users');
 
 //management routes
 var dbCreate = require('./routes/management/dbcreate');
-//var storyManagement = require('./routes/management/story');
+var storyManagement = require('./routes/management/story');
+var pageManagement = require('./routes/management/page');
 
 var app = express();
 
@@ -33,7 +34,8 @@ app.use('/users', users);
 
 //management
 app.use('/management/dbcreate',dbCreate);
-//app.use('/management/story',storyManagement);
+app.use('/management/story',storyManagement);
+app.use('/management/page',pageManagement);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
