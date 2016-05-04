@@ -1,0 +1,19 @@
+<% include header1.html %>
+
+
+<p></p>
+<div class="container">
+<table style="width:60%" border="1">
+<th>id</th><th>username</th><th>email</th><th>friends</th>
+<%for(var i=0;i<data.length;i++){%>
+<tr>
+<td><%=data[i].rowid%></td>
+<td><%=data[i].username%></td>
+<td><%=data[i].email%></td>
+<td><%=data[i].friends%></td>
+
+<%}%>
+</table>
+</div>
+
+<% include footer1.html %>

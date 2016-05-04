@@ -8,6 +8,10 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+//management routes
+var dbCreate = require('./routes/management/dbcreate');
+//var storyManagement = require('./routes/management/story');
+
 var app = express();
 
 // view engine setup
@@ -26,6 +30,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+
+//management
+app.use('/management/dbcreate',dbCreate);
+//app.use('/management/story',storyManagement);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

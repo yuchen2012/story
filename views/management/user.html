@@ -1,0 +1,29 @@
+<% include header.html %>
+
+<div class="container">
+<label>User</label>/<label><a href="/management/item">Item</a></label>/<label><a href="/management/blueprint">Blueprint</a></label>			
+</div>
+
+
+
+
+
+<p></p>
+<div class="container">
+<table style="width:60%" border="1">
+<th>id</th><th>username</th><th>email</th><th>friends</th><th>functions</th>
+<%for(var i=0;i<data.length;i++){%>
+<tr>
+<td><%=data[i].rowid%></td>
+<td><%=data[i].username%></td>
+<td><%=data[i].email%></td>
+<td><%=data[i].friends%></td>
+<td>
+<a href="/management/user/delete/<%=data[i].rowid%>">Delete</a>
+</td>
+</tr>
+<%}%>
+</table>
+</div>
+
+<% include footer.html %>

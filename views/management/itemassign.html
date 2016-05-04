@@ -1,0 +1,65 @@
+<% include header1.html %>
+
+<div class="container">
+	<form role="form" method="post">
+		<fieldset>
+			<label>Item</label>
+			
+
+			<div>	
+				<div>
+				<label>id:</label>
+					<input type="text" class="form-control" readonly="readonly" id="rowid" name="rowid" value=<%=data[0].rowid%>>
+				</div>
+			</div>
+
+			
+			<div>
+				<div>
+				    <label>blueprint_id:</label>
+					<input type="text" class="form-control" readonly="readonly" id="blueprint_id" name="blueprint_id" value=<%=data[0].blueprint_id%> required>
+				</div>
+			</div>
+			
+			<div>
+				<label>userid:</label>
+				<div>
+					<input type="text" class="form-control"  id="user_id" name="user_id" value=<%=data[0].user_id%> required>
+				</div>
+			</div>
+			
+			
+			<div>
+				<div>
+				<p></p>
+					<button type="submit" class="btn btn-primary">Assign user</button>
+				</div>
+			</div>
+			
+		</fieldset>
+	</form>
+</div>
+
+<p></P>
+<div class="container">
+<table style="width:60%" border="1">
+<th>name</th><th>description</th><th>logo</th><th> picture</th>
+<%for(var i=0;i<data.length;i++){%>
+<tr>
+<td><%=data[i].name%></td>
+<td  style="width:20%"><%=data[i].description%></td>
+<td><%=data[i].logo%></td>
+<td><img src='../../../images/items/<%=data[i].logo%>'></td>
+
+<%}%>
+</table>
+</div>
+
+<P></p>
+<iframe src="/management/user/show" width="100%" scrolling="no" id="the_iframe" onLoad="calcHeight();" height="1px" frameborder="0" >
+
+</iframe>
+
+<script src="../../../javascripts/iframe.js"></script>
+
+<% include footer1.html %>

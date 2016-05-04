@@ -1,0 +1,28 @@
+<% include header.html %>
+
+
+<div class="container">
+<label><a href="/management/user">User</a></label>/<label>Item</label>/<label><a href="/management/blueprint">Blueprint</a></label>
+<table style="width:60%" border="1">
+<th>user_id</th><th>blueprint_id</th><th>functions</th>
+<%for(var i=0;i<data.length;i++){%>
+<tr>
+<td><%=data[i].user_id%></td>
+<td><%=data[i].blueprint_id%></td>
+<td>
+<a href="/management/item/delete/<%=data[i].rowid%>">Delete</a>/
+<a href="/management/item/assign/<%=data[i].rowid%>">Assign user</a>
+</td>
+</tr>
+<%}%>
+</table>
+</div>
+
+<P></p>
+<iframe src="/management/blueprint/show" width="100%" scrolling="no" id="the_iframe" onLoad="calcHeight();" height="1px" frameborder="0" >
+
+</iframe>
+
+<script src="../../../javascripts/iframe.js"></script>
+
+<% include footer.html %>
