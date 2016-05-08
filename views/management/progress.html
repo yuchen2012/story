@@ -1,0 +1,27 @@
+<% include header.html %>
+
+
+<div class="container">	
+	<label><a href="/management/story">Story</a></label>/<label><a href="/management/page/0">Page</a></label>/<label>Progress</label>
+	<table style="width:60%" border="1">
+		<th>progress id</th><th>current story id</th><th>current page id</th><th>progress</th><th>functions</th>
+		
+		<%for(var i=0;i<data.length;i++){%>
+		<tr>
+			<td><%=data[i].rowid%></td>
+			<td><%=data[i].story_id%></td>
+			<td><%=data[i].page_index%></td>
+			<td><%=data[i].progress%></td>
+			<td>
+				<a href="/management/progress/delete/<%=data[i].rowid%>">Delete</a>
+			</td>
+		</tr>
+		<%}%>		
+	</table>
+</div>
+
+
+
+<!--<script src="../../../javascripts/iframe.js"></script>!-->
+
+<% include footer.html %>

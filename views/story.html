@@ -1,0 +1,20 @@
+<% include header.html %>
+
+
+<div class="container">
+	<center><label><%=data[0].name%></label><p></P>
+	<label><%=data[0].text%></label></center>
+</div>
+
+<div class="container">
+	<center>
+		<a href="/<%=data[0].user_id%>/<%=data[0].story_id%>/<%=data[0].page_index%>/1">Action 1</a>/
+		<a href="/<%=data[0].user_id%>/<%=data[0].story_id%>/<%=data[0].page_index%>/2">Action 2</a>/
+		<a href="/<%=data[0].user_id%>/<%=data[0].story_id%>/<%=data[0].page_index%>/3">Action 3</a>
+		<p></P>
+		<a href="/<%=data[0].user_id%>/<%=data[0].story_id%>/<%=data[0].page_index%>/0">Next</a>
+	</center>
+</div>
+
+
+<% include footer.html %>

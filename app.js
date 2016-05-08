@@ -8,10 +8,13 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+//game progress
+var game = require('./routes/game');
 //management routes
 var dbCreate = require('./routes/management/dbcreate');
 var storyManagement = require('./routes/management/story');
 var pageManagement = require('./routes/management/page');
+var progressManagement = require('./routes/management/progress');
 
 var app = express();
 
@@ -29,13 +32,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+
 app.use('/users', users);
+
+//game progress
+app.use('/', game);
 
 //management
 app.use('/management/dbcreate',dbCreate);
 app.use('/management/story',storyManagement);
 app.use('/management/page',pageManagement);
+app.use('/management/progress',progressManagement);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
